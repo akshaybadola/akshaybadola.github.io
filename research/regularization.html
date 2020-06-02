@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="generator" content="pandoc" />
+     <meta name="author" content="Akshay Badola" /> 
+     <meta name="date" content="2018-07-04" /> 
+
+    <!-- Perhaps change this to something else?     -->
+    <title>Dropout and Regularization</title>
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <!-- What's this? Quotes?-->
+    
+
+    <!-- highlighting must add -->
+    
+
+    <!--Custom CSS styles. Should be more elegant but... -->
+    <!--Maybe I can put a for loop here-->
+    <link type="text/css" rel="stylesheet" href="../assets/css/bootstrap.css"/>
+    <link type="text/css" rel="stylesheet" href="../assets/css/bootstrap-responsive.css"/>
+    <link type="text/css" rel="stylesheet" href="../assets/css/pilcrow.css"/>
+    <link type="text/css" rel="stylesheet" href="../assets/css/hljs-github.min.css"/>
+    <link type="text/css" rel="stylesheet" href="../assets/css/style.css"/>
+    <!--End -->
+
+    
+    
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      extensions: ["tex2jax.js"],
+      jax: ["input/TeX","output/HTML-CSS"],
+      tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}});
+    </script>
+    <script type="text/javascript" src="./settings/MathJax/MathJax.js">
+    </script>
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js">
+    </script>
+    <script type="text/javascript"
+            src="../assets/js/backref.js">
+    </script>
+
+  </head>
+  <body>
+      <div class="banner">
+	<!-- Title -->
+	 <div id="header" align="center"> <h1 class="title">Dropout and Regularization</h1>
+	  
+	  
+	</div>
+      </div>
+
+    <!-- Other custom includes? Before?-->
+    
+
+    <div class="menu-container">
+      <div class="menu-content">
+    	 <div id="TOC"> <ul>
+<li><a href="#dropout">Dropout</a><ul>
+<li><a href="#biological-and-historical-context">Biological and Historical Context</a></li>
+<li><a href="#dropout-for-regularization-in-deep-neural-networks">Dropout for Regularization in Deep Neural Networks</a></li>
+<li><a href="#noise-and-regularization">Noise and Regularization</a></li>
+<li><a href="#random-projections-and-subspace-search">Random Projections and Subspace Search</a></li>
+</ul></li>
+<li><a href="#references">References</a></li>
+</ul> 
+    	</div>
+      </div>
+    </div>
+    <div class="main parent">
+      <div class="main parent content">
+	<!--includes settings/template/latex.template-->
+<p><h1 align="center">Dropout and Regularization</h1></p>
+<h2 id="dropout">Dropout</h2>
+<p>First mention of dropout is found in <span class="citation" data-cites="hinton2012improving">[<a href="#ref-hinton2012improving" role="doc-biblioref">1</a>]</span>. That paper talks about preventing feature correlation in neural networks. Dropout was applied successfully in <span class="citation" data-cites="krizhevsky2012imagenet">[<a href="#ref-krizhevsky2012imagenet" role="doc-biblioref">2</a>]</span> after which it gained widespread popularity. It was shown to be effective in Recurrent Neural Networks for the first time in <span class="citation" data-cites="zaremba2014recurrent">[<a href="#ref-zaremba2014recurrent" role="doc-biblioref">3</a>]</span>.</p>
+<h3 id="biological-and-historical-context">Biological and Historical Context</h3>
+<p>Historically, neural network pruning was an effective way to prevent overfitting of neural networks <span class="citation" data-cites="lecun1990optimal hassibi1993second">[<a href="#ref-lecun1990optimal" role="doc-biblioref">4</a>], [<a href="#ref-hassibi1993second" role="doc-biblioref">5</a>]</span>. These methods used ideas from perturbation theory to minimize the change in second order gradients (hessian).</p>
+<p>Biological motivation for dropout and other sparsity inducing methods can be found in the human brain development <span class="citation" data-cites="paradiso2007neuroscience">[<a href="#ref-paradiso2007neuroscience" role="doc-biblioref">6</a>, pp. 704–707]</span>. The process is known as <em>programmed cell death</em>.</p>
+<p>There are theories and evidence for correlation between sparsity in the brain and intelligence or expertise <span class="citation" data-cites="hanggi2014architecture gencc2018diffusion">[<a href="#ref-hanggi2014architecture" role="doc-biblioref">7</a>], [<a href="#ref-gencc2018diffusion" role="doc-biblioref">8</a>]</span></p>
+<h3 id="dropout-for-regularization-in-deep-neural-networks">Dropout for Regularization in Deep Neural Networks</h3>
+<p>A decent introduction to Regularization Theory can be found in <span class="citation" data-cites="haykin2009neural">[<a href="#ref-haykin2009neural" role="doc-biblioref">9</a>, Ch. 7]</span>. A tutorial with more linear algebraic formulation instead of function analytic perspective is <span class="citation" data-cites="neumaier1998solving">[<a href="#ref-neumaier1998solving" role="doc-biblioref">10</a>]</span>. A thorough introduction to the general theory of regularization can be found in <span class="citation" data-cites="engl1996regularization">[<a href="#ref-engl1996regularization" role="doc-biblioref">11</a>]</span>. A simpler approach to regularization in terms controlling controlling the curvature can be seen in the theory of Additive Models. A good introductory text for that is <span class="citation" data-cites="wood2006generalized">[<a href="#ref-wood2006generalized" role="doc-biblioref">12</a>]</span>.</p>
+<p>The paper that we had discussed was <span class="citation" data-cites="wang2013fast">[<a href="#ref-wang2013fast" role="doc-biblioref">13</a>]</span>. Equivalence of dropout to <span class="math inline"><em>L</em><sub>2</sub></span> regularization can be seen in <span class="citation" data-cites="srivastava2014dropout">[<a href="#ref-srivastava2014dropout" role="doc-biblioref">14</a>]</span>. As we’d discussed, all norm penalties are some form of Tikhonov Regularization.</p>
+<p><span class="citation" data-cites="wang2013fast">[<a href="#ref-wang2013fast" role="doc-biblioref">13</a>]</span> used the Gaussian approximation to the Bernoulli distribution to analytically find the <span class="math inline"><em>Δ</em><em>w</em></span> and thereby speeding up the process. However, in practice their method doesn’t scale well to deeper networks. Gal and Gahramani <span class="citation" data-cites="gal2015dropout">[<a href="#ref-gal2015dropout" role="doc-biblioref">15</a>]</span> have developed a sounder model with a Gaussian Process approximation. I’ll try to read that soon.</p>
+<h3 id="noise-and-regularization">Noise and Regularization</h3>
+<p>Addition of noise to input data was proven equivalent to Tikhonov regularization by Bishop in <span class="citation" data-cites="bishop1995training">[<a href="#ref-bishop1995training" role="doc-biblioref">16</a>]</span>. An interesting article that adds noise to gradients is <span class="citation" data-cites="neelakantan2015adding">[<a href="#ref-neelakantan2015adding" role="doc-biblioref">17</a>]</span>. Similar perturbation at the local minima has been a common technique to find solutions of problems with greedy methods.</p>
+<h3 id="random-projections-and-subspace-search">Random Projections and Subspace Search</h3>
+<p>Random subspace search isn’t usually seen as a similar method as it is more a feature selection method, but that too is an effective regularizer. First discussed in <span class="citation" data-cites="ho1998random">[<a href="#ref-ho1998random" role="doc-biblioref">18</a>]</span> it discusses building an ensemble of decision trees over subsets of features. The method was combined with <em>bootstrap</em> and <em>bagging</em> to create Random Forests by Breiman later <span class="citation" data-cites="breiman2001random">[<a href="#ref-breiman2001random" role="doc-biblioref">19</a>]</span></p>
+<p><span class="math inline">$\mathcal{N}(\mu, \sigma) = \frac{1}{{2\pi\sigma}^{d/2}}\exp(\mathbf{(x-\mu)^T\Sigma^{-1}(x-\mu)})$</span></p>
+<p>Since for dropout the equation over a vector and corresponding weights reduces to <span class="math inline">∑<em>p</em><sub><em>i</em></sub><em>x</em><sub><em>i</em></sub><em>w</em><sub><em>i</em></sub></span>, it can be seen as either zeroing out <span class="math inline"><em>x</em><sub><em>i</em></sub></span> with probability <span class="math inline"><em>p</em><sub><em>i</em></sub></span> drawn from a Bernoulli distribution, or <span class="math inline"><em>w</em></span>. A relation to random subspace methods is arrived at immediately.</p>
+<p>Random projections <span class="citation" data-cites="candes2006near">[<a href="#ref-candes2006near" role="doc-biblioref">20</a>]</span> is a different idea which sounds similar but on which further reading is required.</p>
+<h1 id="references" class="unnumbered">References</h1>
+<div id="refs" class="references" role="doc-bibliography">
+<div id="ref-hinton2012improving">
+<p>[1] G. E. Hinton, N. Srivastava, A. Krizhevsky, I. Sutskever, and R. R. Salakhutdinov, “Improving neural networks by preventing co-adaptation of feature detectors,” <em>arXiv preprint arXiv:1207.0580</em>, 2012.</p>
+</div>
+<div id="ref-krizhevsky2012imagenet">
+<p>[2] A. Krizhevsky, I. Sutskever, and G. E. Hinton, “Imagenet classification with deep convolutional neural networks,” in <em>Advances in neural information processing systems</em>, 2012, pp. 1097–1105.</p>
+</div>
+<div id="ref-zaremba2014recurrent">
+<p>[3] W. Zaremba, I. Sutskever, and O. Vinyals, “Recurrent neural network regularization,” <em>arXiv preprint arXiv:1409.2329</em>, 2014.</p>
+</div>
+<div id="ref-lecun1990optimal">
+<p>[4] Y. LeCun, J. S. Denker, and S. A. Solla, “Optimal brain damage,” in <em>Advances in neural information processing systems</em>, 1990, pp. 598–605.</p>
+</div>
+<div id="ref-hassibi1993second">
+<p>[5] B. Hassibi and D. G. Stork, “Second order derivatives for network pruning: Optimal brain surgeon,” in <em>Advances in neural information processing systems</em>, 1993, pp. 164–171.</p>
+</div>
+<div id="ref-paradiso2007neuroscience">
+<p>[6] M. A. Paradiso, M. F. Bear, and B. W. Connors, “Neuroscience: Exploring the brain,” <em>Hagerstwon, MD: Lippincott Williams &amp; Wilkins</em>, vol. 718, 2007.</p>
+</div>
+<div id="ref-hanggi2014architecture">
+<p>[7] J. Hänggi, K. Brütsch, A. M. Siegel, and L. Jäncke, “The architecture of the chess player׳ s brain,” <em>Neuropsychologia</em>, vol. 62, pp. 152–162, 2014.</p>
+</div>
+<div id="ref-gencc2018diffusion">
+<p>[8] E. Genç, C. Fraenz, C. Schlüter, P. Friedrich, R. Hossiep, M. C. Voelkle, J. M. Ling, O. Güntürkün, and R. E. Jung, “Diffusion markers of dendritic density and arborization in gray matter predict differences in intelligence,” <em>Nature Communications</em>, vol. 9, no. 1, p. 1905, 2018.</p>
+</div>
+<div id="ref-haykin2009neural">
+<p>[9] S. S. Haykin, <em>Neural networks and learning machines</em>, vol. 3. Pearson Upper Saddle River, NJ, USA: 2009.</p>
+</div>
+<div id="ref-neumaier1998solving">
+<p>[10] A. Neumaier, “Solving ill-conditioned and singular linear systems: A tutorial on regularization,” <em>SIAM review</em>, vol. 40, no. 3, pp. 636–666, 1998.</p>
+</div>
+<div id="ref-engl1996regularization">
+<p>[11] H. W. Engl, M. Hanke, and A. Neubauer, <em>Regularization of inverse problems</em>, vol. 375. Springer Science &amp; Business Media, 1996.</p>
+</div>
+<div id="ref-wood2006generalized">
+<p>[12] S. Wood, <em>Generalized additive models: An introduction with r</em>. CRC press, 2006.</p>
+</div>
+<div id="ref-wang2013fast">
+<p>[13] S. Wang and C. Manning, “Fast dropout training,” in <em>International conference on machine learning</em>, 2013, pp. 118–126.</p>
+</div>
+<div id="ref-srivastava2014dropout">
+<p>[14] N. Srivastava, G. E. Hinton, A. Krizhevsky, I. Sutskever, and R. Salakhutdinov, “Dropout: A simple way to prevent neural networks from overfitting.” <em>Journal of Machine Learning Research</em>, vol. 15, no. 1, pp. 1929–1958, 2014.</p>
+</div>
+<div id="ref-gal2015dropout">
+<p>[15] Z. G. Yarin Gal, “Dropout as a bayesian approximation: Insights and applications,” in <em>ICML workshop</em>, 2015.</p>
+</div>
+<div id="ref-bishop1995training">
+<p>[16] C. M. Bishop, “Training with noise is equivalent to tikhonov regularization,” <em>Neural computation</em>, vol. 7, no. 1, pp. 108–116, 1995.</p>
+</div>
+<div id="ref-neelakantan2015adding">
+<p>[17] A. Neelakantan, L. Vilnis, Q. V. Le, I. Sutskever, L. Kaiser, K. Kurach, and J. Martens, “Adding gradient noise improves learning for very deep networks,” <em>arXiv preprint arXiv:1511.06807</em>, 2015.</p>
+</div>
+<div id="ref-ho1998random">
+<p>[18] T. K. Ho, “The random subspace method for constructing decision forests,” <em>IEEE Transactions on Pattern Analysis and Machine Intelligence</em>, vol. 20, no. 8, 1998.</p>
+</div>
+<div id="ref-breiman2001random">
+<p>[19] L. Breiman, “Random forests,” <em>Machine learning</em>, vol. 45, no. 1, pp. 5–32, 2001.</p>
+</div>
+<div id="ref-candes2006near">
+<p>[20] E. J. Candes and T. Tao, “Near-optimal signal recovery from random projections: Universal encoding strategies?” <em>IEEE Transactions on Information Theory</em>, vol. 52, no. 12, pp. 5406–5425, 2006.</p>
+</div>
+</div>
+      </div>
+    </div>
+
+      <!-- <div class="row banner footer"> -->
+      <!-- 	<\!-- Include author and date -\-> -->
+      <!-- 	 <p class="author">Akshay Badola</p>  -->
+      <!-- 	 <p class="date">2018-07-04</p>  -->
+      <!-- </div> -->
+    
+
+    
+    <!-- <script type="text/javascript" src="settings/blog/assets/js/jquery-3.3.1.js"></script> -->
+      <!-- <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script> -->
+      <script type="text/javascript">document.onload=backrefs();</script>
+  </body>
+</html>
