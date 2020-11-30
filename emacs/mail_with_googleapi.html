@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="generator" content="pandoc" />
+     <meta name="author" content="Akshay Badola" /> 
+     <meta name="date" content="2020-12-01" /> 
+
+    <!-- Perhaps change this to something else?     -->
+    <title>Sending Mail with Python and Googleapi for Emacs</title>
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <!-- What's this? Quotes?-->
+    
+
+    <!-- highlighting must add -->
+    
+
+    <!--Custom CSS styles. Should be more elegant but... -->
+    <!--Maybe I can put a for loop here-->
+    <link type="text/css" rel="stylesheet" href="../assets/css/bootstrap.css"/>
+    <link type="text/css" rel="stylesheet" href="../assets/css/bootstrap-responsive.css"/>
+    <link type="text/css" rel="stylesheet" href="../assets/css/pilcrow.css"/>
+    <link type="text/css" rel="stylesheet" href="../assets/css/hljs-github.min.css"/>
+    <link type="text/css" rel="stylesheet" href="../assets/css/style.css"/>
+    <!--End -->
+
+    
+    
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      extensions: ["tex2jax.js"],
+      jax: ["input/TeX","output/HTML-CSS"],
+      tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}});
+    </script>
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js">
+    </script>
+    <script type="text/javascript"
+            src="../assets/js/backref.js">
+    </script>
+
+  </head>
+  <body>
+    <div class="banner">
+      <!-- Title -->
+       <div id="header" align="center"> <h1 class="title">This Emacs Life</h1>
+	
+	
+      </div>
+    </div>
+    <script type="text/javascript" src="../assets/js/emacs_titles.js"></script>
+    <!-- Other custom includes? Before?-->
+    
+
+    <div class="menu-container">
+      <div class="menu-content">
+        <ul>
+          <li><a href="../index.html">
+              <span style="font-weight:900">Home</span>
+            </a>
+          </li>
+        </ul>
+    	
+    	</div>
+      </div>
+    <div class="main parent">
+      <div class="main parent content">
+        <span>Posted on: 2020-12-01, in Category: <a href="../emacs.html">emacs</a>, tags: <a href='../tags/emacs.html'>emacs</a>, <a href='../tags/mail.html'>mail</a>, <a href='../tags/python.html'>python</a>, <a href='../tags/lisp.html'>lisp</a></span>
+	<h1 align="center">Sending Mail with Python and Googleapi for Emacs</h1>
+<p>So I love Emacs. Why I love it would be the subject of another blog post, but as I love it I want to do everything from it, including sending and reading mail as it is very convenient for me. Emacs can automate a lot of tasks for me.</p>
+<p>Anyway so <a href="https://www.djcbsoftware.nl/code/mu/">mu4e</a> does a really good job of indexing and reading mails in emacs. It has a good compose feature also and it leaves receiving and sending mail up to the mail client of user’s choice.</p>
+<p>For receiving mail I’ve been using <a href="http://www.offlineimap.org/">offlineimap</a> which also does a fairly good job. It’s not fussy and works as expected. The problem I faced is with sending mail. <a href="http://www.offlineimap.org/">offlineimap</a> can work with <a href="https://developers.google.com/gmail/imap/xoauth2-protocol">xoauth2</a> (xoauth2 is a variant of Oauth with some custom extensions by Google) and I have indeed retrieved and stored tokens for it which it can use to fetch my mail. And earlier I was using Emacs’s <code>smtpmail-send-it</code> to send mail. The problem occurs with the <code>auth-source</code>, the backend Emacs uses to authenticate with any server.</p>
+<p>Now I did find this <a href="https://github.com/ccrusius/auth-source-xoauth2">auth-source-xoauth2</a> and it works fine actually, but…and it’s a very annoying but, sometimes <code>smtpmail-send-it</code> does not authenticate and gives me a <code>334</code> error (authentication required). And it happens often enough for me to get irked.</p>
+<p>So the solution? One solution would be to use <a href="http://www.postfix.org/">postfix</a> to send mail and actually I did install <a href="http://www.postfix.org/">postfix</a> to see if I could configure Emacs for it, but it proved to be overkill for my use. It’s supposed to be a general purpose mail server and there are too many configurations and plugins for my simple use case.</p>
+<p>So after a bunch of research (at which I’m fairly good) and hacking, I discovered that google has fairly good python library [https://github.com/googleapis/google-api-python-client] with a fairly extensive set of features. And sending mail from it is not that difficult and decided to write a simple server which can send mail instead of <code>smtpmail-send-it</code>.</p>
+<p>What it does basically is given a mail message in a proper format with all correct fields and boundaries, it reads the credentials from a <a href="https://www.passwordstore.org/">password store</a>, stored as a JSON formatted string and initiates a <code>service</code> instance. From that we can send and receive mail messages, and we only need the send part of that.</p>
+<p>I’ve made it a <a href="https://flask.palletsprojects.com/">flask</a> server so it only needs to read the credentials once from the store at startup, so I don’t need to feed them again after the timeout expires to emacs in case I need to send the mail later. You can take a look at it <a href="https://gist.github.com/akshaybadola/cb41f5e8a4bde80dd9d5d191d4afd41f">here</a>.</p>
+<p>OK, fine you ask, but who’ll format the message and attachments and insert proper fields? Why, Emacs of course! Instead of launching a network process, we simply send to <code>gmailer</code> instead. I’ve posted that function as a gist <a href="https://gist.github.com/akshaybadola/862c01471f899afdc7a8970de1b5052c">here</a>.</p>
+<p>Basically, <a href="https://www.djcbsoftware.nl/code/mu/">mu4e</a> and <code>smtpmail</code> do all the hard work and we steal the final product and dump it to the google client! Problemm solved (for now, until the bugs come :-D). I’m sure there’ll be bugs, but I’ll keep maintaining the gists and if required gather them into a repo. Happy Emacs’ing!</p>
+      </div>
+    </div>
+
+      <!-- <div class="row banner footer"> -->
+      <!-- Include author and date -->
+      <!-- 	 <p class="author">Akshay Badola</p>  -->
+      <!-- 	 <p class="date">2020-12-01</p>  -->
+      <!-- </div> -->
+
+    
+    <!-- <script type="text/javascript" src="settings/blog/assets/js/jquery-3.3.1.js"></script> -->
+      <!-- <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script> -->
+      <script type="text/javascript">document.onload=backrefs();</script>
+  </body>
+</html>

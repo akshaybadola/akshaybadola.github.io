@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -127,11 +127,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     	
     	</div>
       </div>
-    </div>
     <div class="main parent">
       <div class="main parent content">
         <span>Posted on: 2020-06-09, in Category: <a href="../programming.html">programming</a>, tags: <a href='../tags/python.html'>python</a>, <a href='../tags/functional_programming.html'>functional_programming</a>, <a href='../tags/ref-man.html'>ref-man</a>, <a href='../tags/arxiv.html'>arxiv</a>, <a href='../tags/research.html'>research</a></span>
-	<p><h1 align="center">A Python Functional Programming Example</h1></p>
+	<h1 align="center">A Python Functional Programming Example</h1>
 <p>So I was working on my <a href="https://github.com/akshaybadola/ref-man">ref-man</a> emacs package and I had made some additions which incorporate a local python flask server running on it which fetches data from from <a href="https://dblp.uni-trier.de">dblp API</a>, <a href="https://arxiv.org/help/api/">arXiv API</a> and also I’m adding <a href="https://api.semanticscholar.org">semantic scholar</a> support. Originally there was only dblp calls so I had to modify the functions and I took a functional programming approach, by generating partial functions and using them to modify the existing code as I modified my existing implementation.</p>
 <p>The old dblp function was <code>dblp_old</code> which is still in the file</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">def</span> dblp_old():</span>
@@ -219,11 +218,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
 
       <!-- <div class="row banner footer"> -->
-      <!-- 	<\!-- Include author and date -\-> -->
+      <!-- Include author and date -->
       <!-- 	 <p class="author">Akshay Badola</p>  -->
       <!-- 	 <p class="date">2020-06-09</p>  -->
       <!-- </div> -->
-    
 
     
     <!-- <script type="text/javascript" src="settings/blog/assets/js/jquery-3.3.1.js"></script> -->
