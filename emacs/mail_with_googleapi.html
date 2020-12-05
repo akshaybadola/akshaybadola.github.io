@@ -15,7 +15,68 @@
     
 
     <!-- highlighting must add -->
-    
+     <style type="text/css"> pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */ </style> 
 
     <!--Custom CSS styles. Should be more elegant but... -->
     <!--Maybe I can put a for loop here-->
@@ -63,12 +124,14 @@
             </a>
           </li>
         </ul>
-    	
+    	 <div id="TOC"> <ul>
+<li><a href="#update">Update</a></li>
+</ul> 
     	</div>
       </div>
     <div class="main parent">
       <div class="main parent content">
-        <span>Posted on: 2020-12-01, in Category: <a href="../emacs.html">emacs</a>, tags: <a href='../tags/emacs.html'>emacs</a>, <a href='../tags/mail.html'>mail</a>, <a href='../tags/python.html'>python</a>, <a href='../tags/lisp.html'>lisp</a></span>
+        <span>Posted on: 2020-12-01, Edited on: 2020-12-06, in Category: <a href="../emacs.html">emacs</a>, tags: <a href='../tags/emacs.html'>emacs</a>, <a href='../tags/mail.html'>mail</a>, <a href='../tags/python.html'>python</a>, <a href='../tags/lisp.html'>lisp</a></span>
 	<h1 align="center">Sending Mail with Python and Googleapi for Emacs</h1>
 <p>So I love Emacs. Why I love it would be the subject of another blog post, but as I love it I want to do everything from it, including sending and reading mail as it is very convenient for me. Emacs can automate a lot of tasks for me.</p>
 <p>Anyway so <a href="https://www.djcbsoftware.nl/code/mu/">mu4e</a> does a really good job of indexing and reading mails in emacs. It has a good compose feature also and it leaves receiving and sending mail up to the mail client of user’s choice.</p>
@@ -79,7 +142,15 @@
 <p>What it does basically is given a mail message in a proper format with all correct fields and boundaries, it reads the credentials from a <a href="https://www.passwordstore.org/">password store</a>, stored as a JSON formatted string and initiates a <code>service</code> instance. From that we can send and receive mail messages, and we only need the send part of that.</p>
 <p>I’ve made it a <a href="https://flask.palletsprojects.com/">flask</a> server so it only needs to read the credentials once from the store at startup, so I don’t need to feed them again after the timeout expires to emacs in case I need to send the mail later. You can take a look at it <a href="https://gist.github.com/akshaybadola/cb41f5e8a4bde80dd9d5d191d4afd41f">here</a>.</p>
 <p>OK, fine you ask, but who’ll format the message and attachments and insert proper fields? Why, Emacs of course! Instead of launching a network process, we simply send to <code>gmailer</code> instead. I’ve posted that function as a gist <a href="https://gist.github.com/akshaybadola/862c01471f899afdc7a8970de1b5052c">here</a>.</p>
-<p>Basically, <a href="https://www.djcbsoftware.nl/code/mu/">mu4e</a> and <code>smtpmail</code> do all the hard work and we steal the final product and dump it to the google client! Problemm solved (for now, until the bugs come :-D). I’m sure there’ll be bugs, but I’ll keep maintaining the gists and if required gather them into a repo. Happy Emacs’ing!</p>
+<p>Basically, <a href="https://www.djcbsoftware.nl/code/mu/">mu4e</a> and <code>smtpmail</code> do all the hard work and we steal the final product and dump it to the google client! Problem solved (for now, until the bugs come :-D). I’m sure there’ll be bugs, but I’ll keep maintaining the gists and if required gather them into a repo. Happy Emacs’ing!</p>
+<h2 id="update">Update</h2>
+<p>So after all this, one issue still niggled me. Currently I use <a href="http://www.offlineimap.org/">offlineimap</a> to retrieve mail from the IMAP servers and it authenticates via some parameters in <code>.offlineimaprc</code>. One can fetch passwords from <a href="https://www.passwordstore.org/">pass</a> or through GPG encrypted files directly but it can get annoying as you’ll have to fill in passphrase each time.</p>
+<p>So what the <a href="https://gist.github.com/akshaybadola/862c01471f899afdc7a8970de1b5052c">gmailer</a> does is ask for credentials once and then they’re with the app with no way to retrieve them. Of course you have to trust your python interpreter and the OS that the memory cannot be snooped, but we’ll assume that that’s the case.</p>
+<p>Now <a href="http://www.offlineimap.org/">offlineimap</a> is run from the command line and while the docs say that it can be used as a library, I found several problems with that.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>  oi <span class="op">=</span> OfflineImap()</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  oi.run()</span></code></pre></div>
+<p>Now, the problem that arises is that you can only call this once. They’ve used some weird <code>ConstProxy</code> class to make sure that all the variables are set only once, so that the class can be instantiated only once also and the parameters are set only from either the command line or the config file. That’s insane! Though I think the restrictions are there so that multiple processes don’t try to write to same maildir.</p>
+<p>Also did I mention that the entire thing is in <code>python2</code>? While there’s a <code>python3</code> project underway, it’s still far from being production ready. So I can either hack the class or let it go for now, and I think I’ll just let things be. Maybe one of these days I’ll get annoyed and hack it.</p>
       </div>
     </div>
 
