@@ -3,8 +3,9 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="generator" content="pandoc" />
-     <meta name="author" content="Akshay Badola" /> 
+    <meta name="author" content="Akshay Badola" />
     
 
     <!-- Perhaps change this to something else?     -->
@@ -23,7 +24,8 @@
     <link type="text/css" rel="stylesheet" href="../assets/css/bootstrap-responsive.css"/>
     <link type="text/css" rel="stylesheet" href="../assets/css/pilcrow.css"/>
     <link type="text/css" rel="stylesheet" href="../assets/css/hljs-github.min.css"/>
-    <link type="text/css" rel="stylesheet" href="../assets/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="../assets/fonts/font-awesome/css/font-awesome.min.css"/>
+    <link type="text/css" rel="stylesheet" href="../assets/css/main.css"/>
     <!--End -->
 
     
@@ -31,9 +33,9 @@
 
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({
-      extensions: ["tex2jax.js"],
-      jax: ["input/TeX","output/HTML-CSS"],
-      tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}});
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}});
     </script>
     <script type="text/javascript" async
             src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js">
@@ -43,48 +45,85 @@
     </script>
   </head>
   <body>
-    <div class="banner">
-      <!-- Title -->
-	 <div id="header" align="center"> <h1 class="title">Badola's Blog and Stuff</h1>
-	
-	
-      </div>
-    </div>
-    <script type="text/javascript" src="../assets/js/index_titles.js"></script>
-    <!-- Other custom includes? Before?-->
-    
-
-      <div class="menu-container">
-        <div class="menu-content">
-          <ul><li><a href='../index.html'>Home</a></li><li><a href='../misc.html'>Misc</a></li><li><a href='../emacs.html'>Emacs</a></li><li><a href='../research.html'>Research</a></li><li><a href='../programming.html'>Programming</a></li><li><a href='../links.html'>Links</a></li><li><a href='../about.html'>About</a></li></ul>
+    <div class="wrapper">
+      <script type="text/javascript" src="../assets/js/index_titles.js"></script>
+      <div class="banner shadow">
+        <!-- Title -->
+         <div id="header" align="center"> <h1 class="title">Badola's Blog and Stuff</h1>
+          
+          
         </div>
       </div>
 
-    <div class="main parent">
-      <div class="main parent content">
-	<h1 align="center">Posts tagged as dropout</h1>
-        
+      <!-- Other custom includes? Before?-->
+
+      <div class="sidebar shadow">
+        <div class="content">
+          <ul><li><a href='../index.html'>Home</a></li><li><a href='../misc.html'>Misc</a></li><li><a href='../emacs.html'>Emacs</a></li><li><a href='../programming.html'>Programming</a></li><li><a href='../research.html'>Research</a></li><li><a href='../links.html'>Links</a></li><li><a href='../about.html'>About</a></li></ul>
+        </div>
+      </div>
+
+      
+      <!-- <div class="main parent"> -->
+        <div class="main parent">
+          <h1 align="center">Posts tagged as dropout</h1>
+          
 <div class="main parent content snippet">
     <span><a href="../research/regularization.html">
             <h4>Dropout and Regularization</h4>
-            First mention of dropout is found in [1]. That paper talks about preventing feature correlation in neural networks. Dropout was applied successfully in [2] after which it gained widespread popularity. It was shown to be effective in Recurrent Neural Networks for the first time in [3]. Historically, neural network pruning was an effective way to prevent overfitting of neural networks [4], [5]. These methods used ideas from perturbation theory to minimize the change in second order gradients (hessian)....
+            First mention of dropout is found in (Hinton et al. 2012). That paper talks about preventing feature correlation in neural networks. Dropout was applied successfully in (Krizhevsky et al. 2012) after which it gained widespread popularity. It was shown to be effective in Recurrent Neural Networks for the first time in (Zaremba et al. 2014). Historically, neural network pruning was an effective way to prevent overfitting of neural networks (Hassibi and Stork 1993; LeCun et al. 1990). These methods used ideas from perturbation theory to minimize the change in second order gradients (hessian)....
           </a>
     </span>
 <p></p><br>
-<p>Posted on: 2018-07-04, in Category: <a href="../research.html">research</a></p></div>
+<p>Posted on: 2018-07-04, in Category: <a class="category" href="../research.html">research</a></p></div>
+        </div>
+        <!-- </div> -->
+
+      <div class="about shadow">
+        <!-- <div class="content"> -->
+          
+<header>
+  <div class="cover-author-image">
+    <a href="../about.html"><img src="" alt="Akshay Badola"></a>
+  </div>
+  <div class="author-name">Akshay Badola</div>
+  <p>I'm a cool guy</p>
+</header> <!-- End Header -->
+<footer>
+  <section class="contact">
+    <h4 class="contact-title">Contact me</h4>
+    <ul>
+      <li class="github">
+        <a href="https://github.com/akshaybadola" target="_blank">
+          <i class="fa fa-github"></i>
+        </a>
+      </li>
+      <li class="linkedin">
+        <a href="https://linkedin.com/akshay-badola" target="_blank">
+          <i class="fa fa-linkedin"></i>
+        </a>
+      </li>
+    </ul>
+  </section> <!-- End Section Contact -->
+  <div class="copyright">
+  <p>2021 &copy; Akshay Badola</p>
+  </div>
+</footer> <!-- End Footer -->
+        <!-- </div> -->
       </div>
-    </div>
+
 
       <!-- <div class="row banner footer"> -->
-      <!-- Include author and date -->
-      <!-- 	 <p class="author">Akshay Badola</p>  -->
-      <!-- 	 -->
-      <!-- </div> -->
-    
+        <!-- Include author and date -->
+        <!-- 	 <p class="author">Akshay Badola</p>  -->
+        <!-- 	 -->
+        <!-- </div> -->
 
-    
-    <!-- <script type="text/javascript" src="/assets/js/jquery-3.3.1.js"></script> -->
+      
+      <!-- <script type="text/javascript" src="/assets/js/jquery-3.3.1.js"></script> -->
       <!-- <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script> -->
       <script type="text/javascript">document.onload=backrefs();</script>
+      <script type="text/javascript">document.onload=change_title();</script>
+    </div>
   </body>
 </html>
