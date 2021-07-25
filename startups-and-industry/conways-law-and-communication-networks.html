@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="generator" content="pandoc" />
+    <meta name="author" content="Akshay Badola" />
+    <meta name="date" content="2021-07-26" />
+
+    <!-- Perhaps change this to something else?     -->
+    <title>Conway’s law and communication networks</title>
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <!-- What's this? Quotes?-->
+    
+
+    <!-- highlighting must add -->
+    
+
+    <!--Custom CSS styles. Should be more elegant but... -->
+    <!--Maybe I can put a for loop here-->
+    <link type="text/css" rel="stylesheet" href="../assets/css/bootstrap.css"/>
+    <!-- <link type="text/css" rel="stylesheet" href="../assets/css/bootstrap-responsive.css"/> -->
+    <!-- <link type="text/css" rel="stylesheet" href="../assets/css/pilcrow.css"/> -->
+    <!-- <link type="text/css" rel="stylesheet" href="../assets/css/hljs-github.min.css"/> -->
+    <link type="text/css" rel="stylesheet" href="../assets/fonts/font-awesome/css/font-awesome.min.css"/>
+    <link type="text/css" rel="stylesheet" href="../assets/css/main.css"/>
+    <!--End -->
+
+    
+    
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}});
+    </script>
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js">
+    </script>
+    <script type="text/javascript"
+            src="../assets/js/backref.js">
+    </script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      
+      <div class="banner shadow">
+        <!-- Title -->
+         <div id="header" align="center"> <h1 class="title">Badola's Blog and Stuff</h1>
+	  
+	  
+        </div>
+      </div>
+      <!-- Other custom includes? Before?-->
+      
+
+      <div class="sidebar shadow">
+        <div class="content">
+          <ul>
+            <li><a href="../index.html">
+                <span style="font-weight:900">Home</span>
+              </a>
+            </li>
+          </ul>
+    	   <div id="TOC"> <ul>
+<li><a href="#conways-law-and-communication-networks">Conway’s law and communication networks</a>
+<ul>
+<li><a href="#conways-law">Conway’s Law</a></li>
+<li><a href="#patterns-of-communication">Patterns of Communication</a></li>
+<li><a href="#modern-trends">Modern Trends</a></li>
+<li><a href="#traps">Traps</a></li>
+</ul></li>
+<li><a href="#references">References</a></li>
+</ul> 
+    	  </div>
+        </div>
+      </div>
+      <div class="main parent">
+        <span>Posted on: 2021-07-26, in Category: <a class="category" href="../startups-and-industry.html">startups-and-industry</a>, tags: <a class="tag" href='../tags/communication.html'>communication</a> <a class="tag" href='../tags/organizations.html'>organizations</a> <a class="tag" href='../tags/startups.html'>startups</a> <a class="tag" href='../tags/conway's_law.html'>conway's_law</a></span>
+        <span style="padding: 1%">
+          <p><a id="orgf96ec61"></a></p>
+          <h1 id="conways-law-and-communication-networks">Conway’s law and communication networks</h1>
+          <p>I’ve been working in this (stealth as of now) startup for more than a month now and although it’s smaller than the one where I had worked prveviously, I’m quite intrigued by the communication structures and the inefficiencies that I perceive because of them.</p>
+          <p>One key difference here is that I have to coordinate across mutliple teams (two as of now) with different skills and specializations and as such, I can see certain patterns of communication emerging and which also makes me think of Conway’s law:</p>
+          <p><a id="orgb9325e1"></a></p>
+          <h2 id="conways-law">Conway’s Law</h2>
+          <blockquote>
+          <p>Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization’s communication structure.</p>
+          <ul>
+          <li>Melvin Conway, <a href="https://en.wikipedia.org/wiki/Conway%27s_law" class="uri">https://en.wikipedia.org/wiki/Conway%27s_law</a></li>
+          </ul>
+          </blockquote>
+          <p>In the context of Conway and in general a system can be any tool for assisting or automating an organization workflow. Here we consider only business workflows, as an organization can be non-profit, educational or simply a collection of individuals working on a shared task.</p>
+          <p>A business organization on the other hand would have defined outcomes (usually in terms of products or financial metrics) and roles according to specialization (a la <em>industrial revolution</em>). There are certain other interesting aspects of such an organizational structure, for example:</p>
+          <ul>
+          <li>Monotony: Human brains haven’t really evolved to do one task repetitively, though there may be certain brains more wired to it than others</li>
+          <li>Social Hierarchies</li>
+          <li>Monetary Incentives and issues surrounding them: How much does one get paid and how to ensure fairness or perceived fairness</li>
+          <li>Actualization: Human beings need to feel they have (or need to have) a purpose in life or their lives have meaning which becomes hard if you think you’re a cog in a big machine.</li>
+          </ul>
+          <p>Now we can talk about the communication structure as:</p>
+          <ol type="1">
+          <li>Overview of the communication structure</li>
+          <li>Mathematical modeling of the communication and task patterns</li>
+          </ol>
+          <p><a id="org0ca683c"></a></p>
+          <h2 id="patterns-of-communication">Patterns of Communication</h2>
+          <p>Mathematical modeling we leave for a later date and let’s get back to communication patterns and systems. Here I note down the patterns and some observations related to those patterns emerging:</p>
+          <ol type="1">
+          <li>Messages are localized within the departments in an org</li>
+          <li>Messages are further localized within the teams in a department</li>
+          <li>Inter team and inter department communication happens usually through few intersection points (or interfaces).</li>
+          <li>Localization of messages leads to separate codes being developed for each team/department.</li>
+          </ol>
+          <p>Now, at this point it seems that the communication networks are behaving like the Real World Networks explored by Barabasi in <span class="citation" data-cites="2021">(Barabasi <a href="#ref-2021" role="doc-biblioref">2021</a>)</span> and I’m curious if the networks mentioned in the book are natural or man made? I’ll have to read the book for that.</p>
+          <p>Getting back to communication in an organization, another thing I’ve noticed is that we as software engineers have modeled the systems based on the network patterns. For example, contrast the Java ecosystem with Emacs.</p>
+          <p>Java is:</p>
+          <ol type="1">
+          <li>Used primarily in enterprise software</li>
+          <li>Known for robustness</li>
+          <li>Follows the OO paradigm</li>
+          </ol>
+          <p>Now think of the enterprise communication. Like Java we have information hiding between team and there may be information hiding among classes (say representing individuals) and the teams (packages in java). Communication among them in both cases happens via public functions.</p>
+          <p>Similarities between Java and Enterprise organizations:</p>
+          <ol type="1">
+          <li><p>Java: Rigidity due to enforced structure and typing in Java</p>
+          <p>Enterprise: Similar to bureacracy and standards in an enterprise org.</p></li>
+          <li><p>Java: Difficult to change advanced projects</p>
+          <p>Enterprise: Again similar to lumbering caricature of enterprise orgs.</p></li>
+          <li><p>Java: A lot of people hate working with it</p>
+          <p>Enterprise: Nothing to explain here</p></li>
+          <li><p>Java: Classes and packages are built on encapsulation and information hiding</p>
+          <p>Enterprise: Hierarchies are built on such principles as well. All information isn’t accessible to everyone.</p></li>
+          <li><p>Java: Projects are robust and can last for decades</p>
+          <p>Enterprise: Enterprises also have to last for very long and have to be resistant to failures.</p></li>
+          </ol>
+          <p>Now consider Emacs and its open source Lisp implementation and similar nature of its functions, modules and packages.</p>
+          <ol type="1">
+          <li><p>Elisp: Dynamic typing, pluggable modules. Change at any stage is easy.</p>
+          <p>OSS: OSS movement and orgs are similar. Dynamic and ever changing</p></li>
+          <li><p>Elisp: People love working with it.</p>
+          <p>OSS: People love working with OSS also.</p></li>
+          <li><p>Elisp: Everything is global and all variables and functions are accessible to everyone. This is the opposite of information hiding! Yet Emacs is huge and it works in cooperation with certain conventions.</p>
+          <p>OSS: Code and docs are open. Standards are open. Comments are open. Knowledge is shared.</p></li>
+          <li><p>Emacs: Ease of modification can lead to instability.</p>
+          <p>OSS: Projects can be chaotic and unpredictable.</p></li>
+          <li><p>Elisp: Things can get ugly if bad code is introduced</p>
+          <p>OSS: Projects can die quickly if the driving people aren’t good. Though that can be said of enterprises also but it’s more true for OSS projects because of lack of structure. A top exec can be replaced but it’s more difficult to replace a BDFL in an OSS project.</p></li>
+          </ol>
+          <p><a id="orge84ccee"></a></p>
+          <h2 id="modern-trends">Modern Trends</h2>
+          <p>Curiously the modern trend has been to have a bit of a hybrid approach of the two. Permit wide variation within components but strict communication protocols across components. Such patterns can emerge in Microservices where the implementation of each microservice is not only independent but could use any framework or design pattern. While the communication between the microservices is usually strict and follows certain patterns.</p>
+          <p>The question then to ask is, can we adapt this pattern to an organization? Have these patterns already been adapted? Agile and related methods have already evangelized small teams, documentation and TDD etc. Companies like Amazon have focused on small teams for fast evolution of new features. We have to then think of how the communication patterns should be analogous to microservices architecture.</p>
+          <p><a id="org927c342"></a></p>
+          <h2 id="traps">Traps</h2>
+          <p>Of course all of these dictums won’t hold in all cases. Certain assumptions can simply be not true in the given context. For example:</p>
+          <ol type="1">
+          <li>Humans are not machines For example, we can’t always assume that a human acting as a mediator will be highly available.</li>
+          <li>Humans aren’t fully rational Humans can have skewed incentives like social constraints and objectives or other psychological factors.</li>
+          <li>Humans need motivation While a machine will simply perform its task, humans will need to have motivation to perform it and money may not always be motivation enough.</li>
+          </ol>
+          <h1 class="unnumbered" id="references">References</h1>
+          <div id="refs" class="references" role="doc-bibliography">
+          <div id="ref-2021">
+          <p>[1] A.-L. Barabasi, “Network science.” <a href="http://networksciencebook.com/">http://networksciencebook.com/</a>, 2021.</p>
+          </div>
+          </div>
+        </span>
+      </div>
+
+      <div class="about shadow">
+        <!-- <div class="content"> -->
+          <script type="text/javascript" src="../assets/js/about.js"></script>
+<header>
+  <div class="cover-author-image">
+    <a href="../about.html"><img src="../assets/img/photo.png" alt="Akshay Badola"></a>
+  </div>
+  <div class="author-name">Akshay Badola</div>
+  <div class="author-description">I do stuff, sometimes.</div>
+</header> <!-- End Header -->
+<footer>
+  <section class="contact">
+    <h4 class="contact-title">Contact me</h4>
+    <ul>
+      <li class="github">
+        <a href="https://github.com/akshaybadola" target="_blank">
+          <i class="fa fa-github"></i>
+        </a>
+      </li>
+      <li class="linkedin">
+        <a href="https://linkedin.com/in/akshay-badola" target="_blank">
+          <i class="fa fa-linkedin"></i>
+        </a>
+      </li>
+    </ul>
+  </section> <!-- End Section Contact -->
+  <div class="copyright">
+  <p>2021 &copy; Akshay Badola</p>
+  </div>
+</footer> <!-- End Footer -->
+        <!-- </div> -->
+      </div>
+
+      <!-- <div class="row banner footer"> -->
+        <!-- Include author and date -->
+        <!-- 	 <p class="author">Akshay Badola</p>  -->
+        <!-- 	 <p class="date">2021-07-26</p>  -->
+        <!-- </div> -->
+
+      
+      <!-- <script type="text/javascript" src="/assets/js/jquery-3.3.1.js"></script> -->
+      <!-- <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script> -->
+      <script type="text/javascript">document.onload=backrefs();</script>
+      <script type="text/javascript">document.onload=change_title();</script>
+      <script type="text/javascript">document.onload=change_about();</script>
+    </div>
+  </body>
+</html>

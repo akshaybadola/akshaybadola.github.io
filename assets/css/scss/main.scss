@@ -1,6 +1,5 @@
 @import 'normalize';
 
-
 body {
   margin-top: 0;
   background-color: #efefef;
@@ -144,6 +143,7 @@ body {
   position: relative;
   left: 20.5%;
   box-shadow: 8px 8px 8px 0px #aaa;
+  text-align: justify;
 }
 
 .main.parent.content{
@@ -172,10 +172,14 @@ body {
 }
 
 /* NOTE: curiously only [span a] is modified with the current style*/
-.main.parent.content.snippet span a{
-  text-decoration: none;
-  color: inherit;
+.main.parent.content.snippet span {
+  a {  text-decoration: none;
+       color: inherit;}
+  h4 {
+    margin-bottom: 1em;
+  }
 }
+
 .main.parent.content.snippet a{
   text-decoration: none;
 }
@@ -184,12 +188,12 @@ body {
   display: flex;
   flex-direction: column;
   width: 12%;
-  position: absolute;
+  position: fixed;
   right: 1%;
-  top: 9%;
+  top: 3em;
   margin-top: 5%;
   max-height: 480px;
-  margin: 0 0 40px;
+  // margin: 0 0 40px;
   // text-align: center;
   // box-shadow: 0 15px 45px -10px rgba(10, 16, 34, .2);
   background-color: white;
@@ -244,7 +248,7 @@ body {
     //   background-color: #515151;
     // }
   }
-  p {
+  .author-description {
     font-size: 16px;
     text-align: center;
     margin: 0 0 10px;
