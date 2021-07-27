@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="generator" content="pandoc" />
+    <meta name="author" content="Akshay Badola" />
+    <meta name="date" content="2021-07-28" />
+
+    <!-- Perhaps change this to something else?     -->
+    <title>So you want to Sheep</title>
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <!-- What's this? Quotes?-->
+    
+
+    <!-- highlighting must add -->
+    
+
+    <!--Custom CSS styles. Should be more elegant but... -->
+    <!--Maybe I can put a for loop here-->
+    <link type="text/css" rel="stylesheet" href="../assets/css/bootstrap.css"/>
+    <!-- <link type="text/css" rel="stylesheet" href="../assets/css/bootstrap-responsive.css"/> -->
+    <!-- <link type="text/css" rel="stylesheet" href="../assets/css/pilcrow.css"/> -->
+    <!-- <link type="text/css" rel="stylesheet" href="../assets/css/hljs-github.min.css"/> -->
+    <link type="text/css" rel="stylesheet" href="../assets/fonts/font-awesome/css/font-awesome.min.css"/>
+    <link type="text/css" rel="stylesheet" href="../assets/css/main.css"/>
+    <!--End -->
+
+    
+    
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}});
+    </script>
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js">
+    </script>
+    <script type="text/javascript"
+            src="../assets/js/backref.js">
+    </script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <script type="text/javascript" src="../assets/js/research_titles.js"></script>
+      <div class="banner shadow">
+        <!-- Title -->
+         <div id="header" align="center"> <h1 class="title">Are we there yet?</h1>
+	  
+	  
+        </div>
+      </div>
+      <!-- Other custom includes? Before?-->
+      
+
+      <div class="sidebar shadow">
+        <div class="content">
+          <ul>
+            <li><a href="../index.html">
+                <span style="font-weight:900">Home</span>
+              </a>
+            </li>
+          </ul>
+    	   <div id="TOC"> <ul>
+<li><a href="#so-you-want-to-sheep">So you want to Sheep</a>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a>
+<ul>
+<li><a href="#probability-and-statisitcs">Probability and Statisitcs</a></li>
+<li><a href="#linear-algebra">Linear Algebra</a></li>
+<li><a href="#calculus">Calculus</a></li>
+</ul></li>
+<li><a href="#machine-learning">Machine Learning</a></li>
+<li><a href="#neural-networks">Neural Networks</a>
+<ul>
+<li><a href="#linear-models">Linear Models</a></li>
+<li><a href="#introductory-books">Introductory Books</a></li>
+<li><a href="#intermediate-books">Intermediate Books</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#references">References</a></li>
+</ul> 
+    	  </div>
+        </div>
+      </div>
+      <div class="main parent">
+        <span>Posted on: 2021-07-28, in Category: <a class="category" href="../research.html">research</a>, tags: <a class="tag" href='../tags/books.html'>books</a> <a class="tag" href='../tags/references.html'>references</a> <a class="tag" href='../tags/deep_learning.html'>deep_learning</a> <a class="tag" href='../tags/machine_learning.html'>machine_learning</a> <a class="tag" href='../tags/neural_networks.html'>neural_networks</a></span>
+        <span style="padding: 1%">
+          <p><a id="org422a9f4"></a></p>
+          <h1 id="so-you-want-to-sheep">So you want to Sheep</h1>
+          <p>I’ve been doing this Sheep Learning <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> for a while and there often I have to prescribe some references. I’ll write this in the hope that it may be useful to others. Preferably the topics should be followed in order, but one can choose to explore as they wish.</p>
+          <p><a id="org594d51c"></a></p>
+          <h2 id="prerequisites">Prerequisites</h2>
+          <p><a id="org0712ab9"></a></p>
+          <h3 id="probability-and-statisitcs">Probability and Statisitcs</h3>
+          <p>A lot of people tend to jump into the whole area without minimal mathematical prerequisites. However, primarily these are statistical models with a strong focus on Linear Algebra. For undergraduate students I recommend <span class="citation" data-cites="hogg2019probability">(<a href="#ref-hogg2019probability" role="doc-biblioref">Hogg et al. 2019</a>)</span> for the bare minimum of that area.</p>
+          <p>There are too many online references these days and (read noise) it becomes almost impossible to discern between good and bad ones. I recall that when looking for supplemental resources the entire website <a href="https://online.stat.psu.edu/" class="uri">https://online.stat.psu.edu/</a> was excellent.</p>
+          <ul>
+          <li>For a review of basic concepts you can check their page <a href="https://online.stat.psu.edu/statprogram/reviews" class="uri">https://online.stat.psu.edu/statprogram/reviews</a>.</li>
+          <li>After that you can see their undergraduate <a href="https://online.stat.psu.edu/statprogram/undergraduate-studies" class="uri">https://online.stat.psu.edu/statprogram/undergraduate-studies</a> and graduate <a href="https://online.stat.psu.edu/statprogram/graduate-programs" class="uri">https://online.stat.psu.edu/statprogram/graduate-programs</a> courses for help on specific topics. They are self contained and explain in fair amount of detail.</li>
+          </ul>
+          <p><a id="org3bc6984"></a></p>
+          <h3 id="linear-algebra">Linear Algebra</h3>
+          <p>People like Strang <a href="https://math.mit.edu/linearalgebra/" class="uri">https://math.mit.edu/linearalgebra/</a>, but I never really followed that. I suppose I had covered introductory algebra from other books which are now not available on the market but that is a good reference.</p>
+          <p>There are various books and resources available but essentially one should be very clear about the following concepts:</p>
+          <ol type="1">
+          <li>What is a matrix and what is a Linear Transformation and the difference between the two.</li>
+          <li>Rank, Nullity, Similarity and related properties of a matrix.</li>
+          <li>Vector Spaces and Basis and Dimension of a Vector Space</li>
+          <li>Matrix Transformations, Unitary Matrices</li>
+          <li>Eigenvalues of a matrix</li>
+          <li>Diagonalization of a matrix, SVD</li>
+          <li>Basic properties of matrix calculus</li>
+          </ol>
+          <p><a id="org3b57028"></a></p>
+          <h3 id="calculus">Calculus</h3>
+          <p>A solid grasp of calculus is also required. Most of these Neural Network methods are based on finding minima of a function. As such they are extensions of Newton’s method. However the high dimensional nature means that the student should be familiar with Jacobian, Hessian and the their properties.</p>
+          <p>More advanced topics delve into Functional Analysis. A good intro to Functional Analysis is <span class="citation" data-cites="hirsch1999elements">(<a href="#ref-hirsch1999elements" role="doc-biblioref">Hirsch et al. 1999</a>)</span>.</p>
+          <p><a id="orgdb5a72e"></a></p>
+          <h2 id="machine-learning">Machine Learning</h2>
+          <p>I won’t cover books on advanced topics here. Machine Learning that we mention here is mostly Statistical Learning. A good introduction to that is <span class="citation" data-cites="hastie2009elements">(<a href="#ref-hastie2009elements" role="doc-biblioref">Hastie et al. 2009</a>)</span>. Hastie and Tibshirani are of course noted statisticians and if one is so inclined, one can refer to other books by them. The book is available to download from its <a href="https://web.stanford.edu/~hastie/ElemStatLearn/">homepage</a>.</p>
+          <p>A basic understanding of Bayesian Methods can also prove useful. I’ve found <span class="citation" data-cites="hoff2009first">(<a href="#ref-hoff2009first" role="doc-biblioref">Hoff 2009</a>)</span> a really good introduction to that.</p>
+          <p>Interested students can refer to <span class="citation" data-cites="hart1973pattern">(<a href="#ref-hart1973pattern" role="doc-biblioref">Hart et al. 1973</a>)</span> as a supplemental tract. Larry Wasserman’s <span class="citation" data-cites="wasserman2004statistics">(<a href="#ref-wasserman2004statistics" role="doc-biblioref">Wasserman 2004</a>)</span> is another book covering statistics from an inferential perspective. <span class="citation" data-cites="bishop2007pattern">(<a href="#ref-bishop2007pattern" role="doc-biblioref">Bishop 2007</a>)</span> is from a more Bayesian perspective. While some people like <span class="citation" data-cites="nil">(<a href="#ref-nil" role="doc-biblioref"><strong>nil?</strong></a>)</span>, I’ve found it too terse and riddled with errors.</p>
+          <p>Some topics from <span class="citation" data-cites="haykin2010neural">(<a href="#ref-haykin2010neural" role="doc-biblioref">Haykin 2010</a>)</span> can be studied also. I’ve found their chapter on Regularization to be especially good. They approach the Machine Learning paradigm and the Neural Networks paradigm from a more Signal Processing perspective. <span class="citation" data-cites="hart1973pattern">(<a href="#ref-hart1973pattern" role="doc-biblioref">Hart et al. 1973</a>)</span> has some chapters towards the end on topics like No Free Lunch or the difficultly in learning in High Dimensional spaces and No Free Lunch theorem etc.</p>
+          <p>An Excellent book on Learning Theory is <span class="citation" data-cites="shalevshwartz2014understanding">(<a href="#ref-shalevshwartz2014understanding" role="doc-biblioref">Shalev-Shwartz and Ben-David 2014</a>)</span>. However a new student may find it daunting so I advise it to be referred only after some familiarity with the whole <em>Machine Learning</em> paradigm and the need to understand some deeper questions arises.</p>
+          <p><a id="org879e730"></a></p>
+          <h2 id="neural-networks">Neural Networks</h2>
+          <p>Neural Networks: one of the most misleading phrases in modern science. “Deep” Neural Networks is even more confounding. The <em>Neural Networks</em> are essentially compositions of nonparameteric models linear models with nonlinear activation units.</p>
+          <p><a id="org554e7b2"></a></p>
+          <h3 id="linear-models">Linear Models</h3>
+          <p>A really good introduction to Linear Models and Generalized Additive Models, which gives a great insight into how such nonparametric methods may work is <span class="citation" data-cites="wood2006generalized">(<a href="#ref-wood2006generalized" role="doc-biblioref">Wood 2006</a>)</span> (homepage of book <a href="https://www.maths.ed.ac.uk/~swood34/igam/index.html" class="uri">https://www.maths.ed.ac.uk/~swood34/igam/index.html</a>). A good handle on Linear Models is essential to understand Neural Networks.</p>
+          <p><a id="orge424532"></a></p>
+          <h3 id="introductory-books">Introductory Books</h3>
+          <p>My favourite introductory tract is <span class="citation" data-cites="rojas1996neural">(<a href="#ref-rojas1996neural" role="doc-biblioref">Rojas 1996</a>)</span>. It covers from the beginning of history of <em>Neural Networks</em> and goes through boolean models, <em>backpropagation</em> (another contentious term), advanced optimization methods and some variants of Neural Networks.</p>
+          <p>Earlier version of <span class="citation" data-cites="haykin1998neural">(<a href="#ref-haykin1998neural" role="doc-biblioref">Haykin 1998</a>)</span> is suitable as a supplemental reading, while there are some good chapters in <span class="citation" data-cites="haykin2010neural">(<a href="#ref-haykin2010neural" role="doc-biblioref">Haykin 2010</a>)</span> which can be used for some advanced Machine Learning concepts also (as I’ve mentioned in <a href="#orgdb5a72e">Machine Learning</a>).</p>
+          <p><a id="org99e729c"></a></p>
+          <h3 id="intermediate-books">Intermediate Books</h3>
+          <p><span class="citation" data-cites="goodfellow2015deep">(<a href="#ref-goodfellow2015deep" role="doc-biblioref">Goodfellow et al. 2015</a>)</span> is a good introduction to modern Neural Networks. First five chapters of it cover some topics useful later also. And chapters on CNNs and RNNs can be useful.</p>
+          <h1 class="unnumbered" id="references">References</h1>
+          <div id="refs" class="references csl-bib-body" role="doc-bibliography">
+          <div id="ref-hogg2019probability" class="csl-entry" role="doc-biblioentry">
+          <div class="csl-left-margin">[1] </div><div class="csl-right-inline">R. Hogg, E. A. Tanis, and D. Zimmerman, <span>“Probability and statistical inference. ed.9.”</span> Oct-2019.</div>
+          </div>
+          <div id="ref-hirsch1999elements" class="csl-entry" role="doc-biblioentry">
+          <div class="csl-left-margin">[2] </div><div class="csl-right-inline">F. Hirsch, G. Lacombe, and S. Levy, <em>Elements of functional analysis</em>. 1999.</div>
+          </div>
+          <div id="ref-hastie2009elements" class="csl-entry" role="doc-biblioentry">
+          <div class="csl-left-margin">[3] </div><div class="csl-right-inline">T. Hastie, R. Tibshirani, and J. Friedman, <span>“The elements of statistical learning: Data mining, inference, and prediction, 2nd edition,”</span> <em>Springer Series in Statistics</em>, 2009, pp. I–XXII, 1–745.</div>
+          </div>
+          <div id="ref-hoff2009first" class="csl-entry" role="doc-biblioentry">
+          <div class="csl-left-margin">[4] </div><div class="csl-right-inline">P. D. Hoff, <em>A first course in bayesian statistical methods</em>. 2009.</div>
+          </div>
+          <div id="ref-hart1973pattern" class="csl-entry" role="doc-biblioentry">
+          <div class="csl-left-margin">[5] </div><div class="csl-right-inline">P. Hart, R. Duda, and D. Stork, <em>Pattern classification</em>. 1973.</div>
+          </div>
+          <div id="ref-wasserman2004statistics" class="csl-entry" role="doc-biblioentry">
+          <div class="csl-left-margin">[6] </div><div class="csl-right-inline">L. Wasserman, <span>“All of statistics: A concise course in statistical inference.”</span> Sep-2004.</div>
+          </div>
+          <div id="ref-bishop2007pattern" class="csl-entry" role="doc-biblioentry">
+          <div class="csl-left-margin">[7] </div><div class="csl-right-inline">C. Bishop, <span>“Pattern recognition and machine learning (information science and statistics), 1st edn. 2006. Corr. 2nd printing edn,”</span> <em>Springer, New York</em>, 2007.</div>
+          </div>
+          <div id="ref-haykin2010neural" class="csl-entry" role="doc-biblioentry">
+          <div class="csl-left-margin">[8] </div><div class="csl-right-inline">S. Haykin, <span>“Neural networks and learning machines.”</span> 2010.</div>
+          </div>
+          <div id="ref-shalevshwartz2014understanding" class="csl-entry" role="doc-biblioentry">
+          <div class="csl-left-margin">[9] </div><div class="csl-right-inline">S. Shalev-Shwartz and S. Ben-David, <em>Understanding machine learning - from theory to algorithms</em>. 2014, pp. I–XVI, 1–397.</div>
+          </div>
+          <div id="ref-wood2006generalized" class="csl-entry" role="doc-biblioentry">
+          <div class="csl-left-margin">[10] </div><div class="csl-right-inline">S. Wood, <em>Generalized additive models: An introduction with r</em>. CRC press, 2006.</div>
+          </div>
+          <div id="ref-rojas1996neural" class="csl-entry" role="doc-biblioentry">
+          <div class="csl-left-margin">[11] </div><div class="csl-right-inline">R. Rojas, <em>Neural networks - a systematic introduction</em>. 1996.</div>
+          </div>
+          <div id="ref-haykin1998neural" class="csl-entry" role="doc-biblioentry">
+          <div class="csl-left-margin">[12] </div><div class="csl-right-inline">S. Haykin, <em>Neural networks: A comprehensive foundation</em>. 1998.</div>
+          </div>
+          <div id="ref-goodfellow2015deep" class="csl-entry" role="doc-biblioentry">
+          <div class="csl-left-margin">[13] </div><div class="csl-right-inline">I. Goodfellow, Y. Bengio, and A. C. Courville, <span>“Deep learning,”</span> <em>Nature</em>, vol. 521, pp. 436–444, May 2015.</div>
+          </div>
+          </div>
+          <section class="footnotes" role="doc-endnotes">
+          <hr />
+          <ol>
+          <li id="fn1" role="doc-endnote"><p>I call “Deep Learning” Sheep Learning because I feel a lot of people are doing it like sheep including me perhaps.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+          </ol>
+          </section>
+        </span>
+      </div>
+
+      <div class="about shadow">
+        <!-- <div class="content"> -->
+          <script type="text/javascript" src="../assets/js/about.js"></script>
+<header>
+  <div class="cover-author-image">
+    <a href="../about.html"><img src="../assets/img/photo.png" alt="Akshay Badola"></a>
+  </div>
+  <div class="author-name">Akshay Badola</div>
+  <div class="author-description">I do stuff, sometimes.</div>
+</header> <!-- End Header -->
+<footer>
+  <section class="contact">
+    <h4 class="contact-title">Contact me</h4>
+    <ul>
+      <li class="github">
+        <a href="https://github.com/akshaybadola" target="_blank">
+          <i class="fa fa-github"></i>
+        </a>
+      </li>
+      <li class="linkedin">
+        <a href="https://linkedin.com/in/akshay-badola" target="_blank">
+          <i class="fa fa-linkedin"></i>
+        </a>
+      </li>
+    </ul>
+  </section> <!-- End Section Contact -->
+  <div class="copyright">
+  <p>2021 &copy; Akshay Badola</p>
+  </div>
+</footer> <!-- End Footer -->
+        <!-- </div> -->
+      </div>
+
+      <!-- <div class="row banner footer"> -->
+        <!-- Include author and date -->
+        <!-- 	 <p class="author">Akshay Badola</p>  -->
+        <!-- 	 <p class="date">2021-07-28</p>  -->
+        <!-- </div> -->
+
+      
+      <!-- <script type="text/javascript" src="/assets/js/jquery-3.3.1.js"></script> -->
+      <!-- <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script> -->
+      <script type="text/javascript">document.onload=backrefs();</script>
+      <script type="text/javascript">document.onload=change_title();</script>
+      <script type="text/javascript">document.onload=change_about();</script>
+    </div>
+  </body>
+</html>

@@ -19,6 +19,7 @@
      <style type="text/css"> pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -151,8 +152,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <p>So after all this, one issue still niggled me. Currently I use <a href="http://www.offlineimap.org/">offlineimap</a> to retrieve mail from the IMAP servers and it authenticates via some parameters in <code>.offlineimaprc</code>. One can fetch passwords from <a href="https://www.passwordstore.org/">pass</a> or through GPG encrypted files directly but it can get annoying as you’ll have to fill in passphrase each time.</p>
           <p>So what the <a href="https://gist.github.com/akshaybadola/862c01471f899afdc7a8970de1b5052c">gmailer</a> does is ask for credentials once and then they’re with the app with no way to retrieve them. Of course you have to trust your python interpreter and the OS that the memory cannot be snooped, but we’ll assume that that’s the case.</p>
           <p>Now <a href="http://www.offlineimap.org/">offlineimap</a> is run from the command line and while the docs say that it can be used as a library, I found several problems with that.</p>
-          <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>    oi <span class="op">=</span> OfflineImap()</span>
-          <span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a>    oi.run()</span></code></pre></div>
+          <div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    oi <span class="op">=</span> OfflineImap()</span>
+          <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    oi.run()</span></code></pre></div>
           <p>Now, the problem that arises is that you can only call this once. They’ve used some weird <code>ConstProxy</code> class to make sure that all the variables are set only once, so that the class can be instantiated only once also and the parameters are set only from either the command line or the config file. That’s insane! Though I think the restrictions are there so that multiple processes don’t try to write to same maildir.</p>
           <p>Also did I mention that the entire thing is in <code>python2</code>? While there’s a <code>python3</code> project underway, it’s still far from being production ready. So I can either hack the class or let it go for now, and I think I’ll just let things be. Maybe one of these days I’ll get annoyed and hack it.</p>
         </span>

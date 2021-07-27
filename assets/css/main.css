@@ -6,6 +6,7 @@
  * 2. Prevent adjustments of font size after orientation changes in
  *    IE on Windows Phone and in iOS.
  */
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900,400italic");
 html {
   line-height: 1.15;
   /* 1 */
@@ -391,8 +392,10 @@ template {
 
 body {
   margin-top: 0;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #3c3e50;
   background-color: #efefef;
-  font-size: 1.1em; }
+  font-size: 1.0em; }
 
 .banner {
   width: 65%;
@@ -446,19 +449,28 @@ body {
   background-color: #fff; }
 
 .main.parent {
-  width: 64%;
+  width: 55%;
   height: auto;
-  padding: .5%;
   position: relative;
   left: 20.5%;
-  box-shadow: 8px 8px 8px 0px #aaa;
-  text-align: justify; }
+  text-align: justify;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  box-shadow: 8px 8px 8px 0px #aaa; }
+  .main.parent .csl-entry {
+    display: flex;
+    padding: 2px; }
+  .main.parent .csl-left-margin {
+    margin-right: 10px; }
 
 .main.parent.content {
   scroll-behavior: auto;
   overflow-y: auto;
   height: auto;
-  max-height: 78%; }
+  max-height: 78%;
+  width: auto; }
 
 .main.parent.content.snippet {
   font-size: 0.9em;
@@ -683,6 +695,8 @@ a.tag {
 @media only screen and (max-width: 768px) {
   body {
     padding: 1%; }
+  a {
+    overflow-wrap: break-word; }
   .banner {
     width: 100%;
     margin: 0;
@@ -753,6 +767,8 @@ a.tag {
 @media only screen and (max-width: 480px) {
   body {
     padding: 1%; }
+  a {
+    overflow-wrap: break-word; }
   .banner {
     width: 100%;
     margin: 0;

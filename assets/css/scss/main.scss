@@ -1,9 +1,13 @@
 @import 'normalize';
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900,400italic");
+
 
 body {
   margin-top: 0;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #3c3e50;
   background-color: #efefef;
-  font-size: 1.1em;
+  font-size: 1.0em;
 }
 
 .banner {
@@ -134,16 +138,29 @@ body {
 .main {
   background-color: #fff;
   // border: 1px solid #CCC;
+  span {
+  }
 }
 
 .main.parent{
-  width: 64%;
+  width: 55%;
   height: auto;
-  padding: .5%;
   position: relative;
   left: 20.5%;
-  box-shadow: 8px 8px 8px 0px #aaa;
   text-align: justify;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  box-shadow: 8px 8px 8px 0px #aaa;
+
+  .csl-entry {
+    display: flex;
+    padding: 2px;
+  }
+  .csl-left-margin {
+    margin-right: 10px;
+  }
 }
 
 .main.parent.content{
@@ -151,6 +168,11 @@ body {
   overflow-y: auto;
   height: auto;
   max-height: 78%;
+  width: auto;
+
+  // h2, h3, h4, p {
+  //   background-color: rgba(255,250,230,.3);
+  // }
 }
 
 .main.parent.content.snippet{
