@@ -397,6 +397,25 @@ body {
   background-color: #efefef;
   font-size: 1.0em; }
 
+h1 {
+  text-align: center;
+  font-size: 2.2em; }
+
+h2 {
+  font-size: 1.6em; }
+
+h3 {
+  font-size: 1.4em; }
+
+h4 {
+  font-size: 1.2em; }
+
+h5 {
+  font-size: 1.0em; }
+
+h6 {
+  font-size: 0.8em; }
+
 .banner {
   width: 65%;
   left: 20.5%;

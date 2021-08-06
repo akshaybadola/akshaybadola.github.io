@@ -1,7 +1,6 @@
 @import 'normalize';
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900,400italic");
 
-
 body {
   margin-top: 0;
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -9,6 +8,32 @@ body {
   background-color: #efefef;
   font-size: 1.0em;
 }
+
+h1 {
+  text-align: center;
+  font-size: 2.2em;
+}
+
+h2 {
+  font-size: 1.6em;
+}
+
+h3 {
+  font-size: 1.4em;
+}
+
+h4 {
+  font-size: 1.2em;
+}
+
+h5 {
+  font-size: 1.0em;
+}
+
+h6 {
+  font-size: 0.8em;
+}
+
 
 .banner {
   width: 65%;

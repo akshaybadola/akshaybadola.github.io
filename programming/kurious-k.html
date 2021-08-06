@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="generator" content="pandoc" />
+    <meta name="author" content="Akshay Badola" />
+    <meta name="date" content="2021-08-06" />
+
+    <!-- Perhaps change this to something else?     -->
+    <title>Kurious K</title>
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <!-- What's this? Quotes?-->
+    
+
+    <!-- highlighting must add -->
+    
+
+    <!--Custom CSS styles. Should be more elegant but... -->
+    <!--Maybe I can put a for loop here-->
+    <link type="text/css" rel="stylesheet" href="../assets/css/bootstrap.css"/>
+    <!-- <link type="text/css" rel="stylesheet" href="../assets/css/bootstrap-responsive.css"/> -->
+    <!-- <link type="text/css" rel="stylesheet" href="../assets/css/pilcrow.css"/> -->
+    <!-- <link type="text/css" rel="stylesheet" href="../assets/css/hljs-github.min.css"/> -->
+    <link type="text/css" rel="stylesheet" href="../assets/fonts/font-awesome/css/font-awesome.min.css"/>
+    <link type="text/css" rel="stylesheet" href="../assets/css/main.css"/>
+    <!--End -->
+
+    
+    
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}});
+    </script>
+    <script type="text/javascript" async
+            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js">
+    </script>
+    <script type="text/javascript"
+            src="../assets/js/backref.js">
+    </script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <script type="text/javascript" src="../assets/js/programming_titles.js"></script>
+      <div class="banner shadow">
+        <!-- Title -->
+         <div id="header" align="center"> <h1 class="title">void *ptr</h1>
+	  
+	  
+        </div>
+      </div>
+      <!-- Other custom includes? Before?-->
+      
+
+      <div class="sidebar shadow">
+        <div class="content">
+          <ul>
+            <li><a href="../index.html">
+                <span style="font-weight:900">Home</span>
+              </a>
+            </li>
+          </ul>
+    	   <div id="TOC"> <ul>
+<li><a href="#kurious-k">Kurious K</a>
+<ul>
+<li><a href="#whats-function-level">What’s Function-Level?</a></li>
+<li><a href="#apl-and-k">APL and K</a></li>
+<li><a href="#notation-of-thought">Notation of Thought</a></li>
+<li><a href="#references">References</a></li>
+</ul></li>
+</ul> 
+    	  </div>
+        </div>
+      </div>
+      <div class="main parent">
+        <span>Posted on: 2021-08-06, in Category: <a class="category" href="../programming.html">programming</a>, tags: <a class="tag" href='../tags/functional_programming.html'>functional_programming</a> <a class="tag" href='../tags/apl.html'>apl</a> <a class="tag" href='../tags/k.html'>k</a> <a class="tag" href='../tags/lisp.html'>lisp</a></span>
+        <span style="padding: 1%">
+          <p><a id="org1aa7756"></a></p>
+          <h1 id="kurious-k">Kurious K</h1>
+          <p>So I was searching for appropriate libraries and styles to implement a <em>Deep Learning</em> training pipeline <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Earlier I had stumbled upon Flow Based Programming and <a href="https://github.com/spotify/luigi">Luigi</a>. However that’s not what I was looking for.</p>
+          <p>So I decided to scour the wiki page for programming paradigms and saw <a href="https://en.wikipedia.org/wiki/Aspect-oriented_programming">Aspect Oriented Programming</a> which seems quite familiar to me having used Emacs for a while, although I haven’t used its <code>advice</code> system myself.</p>
+          <p>However, while browsing I came across so many programming paradigms which I’m not familiar with. And I am a sucker for novelty!</p>
+          <p><a id="orgbcc02b5"></a></p>
+          <h2 id="whats-function-level">What’s Function-Level?</h2>
+          <p>On the other hand I am familiar with the <em>Functional Programming</em> paradigm having used Emacs Lisp for a long time and dabbled in introductory Haskell a bit. However, for the first time I came across the term <em>Function-Level</em> Programming.</p>
+          <p>On its wiki <a href="https://en.wikipedia.org/wiki/Function-level_programming">page</a> there’s a quote by John Backus, claiming that programming languages aren’t really doing anything novel. In another paper <span class="citation" data-cites="backus1978programming">(<a href="#ref-backus1978programming" role="doc-biblioref">Backus 1978</a>)</span>, he rails against the Von Neumann style of computation (a complex topic for another time) and laments:</p>
+          <ol type="1">
+          <li>Their close coupling of semantics</li>
+          <li>Their division of programming into a “world of statements” and “a world of expressions”.</li>
+          <li>Their lack of useful mathematical properties for reasoning about programs.</li>
+          </ol>
+          <p>And he calls for an “alternative functional style of programming”.</p>
+          <p>However, he did not really have in mind Lisp, OCaml, Haskell et. al. style of functional programming languages which are popular today and called them <em>Applicative Style</em> (See section 2.2.2 of <span class="citation" data-cites="backus1978programming">(<a href="#ref-backus1978programming" role="doc-biblioref">Backus 1978</a>)</span>).</p>
+          <p>I’ll post notes on that paper in a separate post. However, simply put, he proposed a language called <a href="https://en.wikipedia.org/wiki/FP_(programming_language)">FP</a> (see also <span class="citation" data-cites="backus1978programming">(<a href="#ref-backus1978programming" role="doc-biblioref">Backus 1978</a>)</span>). It’s inspired by APL which he mentions in the paper. Essentially it’s a set of primitives for operations on finite sets. Any program in FP consists of those primitives and compositions of those.</p>
+          <p><a id="org6f004ea"></a></p>
+          <h2 id="apl-and-k">APL and K</h2>
+          <p>However, FP as the wiki page notes, didn’t really become popular outside of academia. There were extensions with FFP, FP84 and FL but nothing substantial.</p>
+          <p><a href="https://en.wikipedia.org/wiki/APL_(programming_language)">APL</a> however is an interesting language founded in the sixties for array processing, which requires special symbols and usually a special keyboard!</p>
+          <p>But! That’s not all. Iverson recognized the difficulty of adoption of <a href="https://en.wikipedia.org/wiki/APL_(programming_language)">APL</a> and continued to work until he developed <a href="https://en.wikipedia.org/wiki/J_(programming_language)">J</a>, which looks fairly interesting. The reason for spare notation and succinctness of syntax can be found in his paper <a href="https://www.jsoftware.com/papers/tot.htm">Notation as a Tool of Though</a> (which I’m yet to read).</p>
+          <p>However, it reminds me of Shakespeare’s “Brevity is the soul of wit” being uttered by a rambling idiot. Or the fact that a concise syntax may sometimes require a lot of explanations.</p>
+          <p>A very interesting adaption of APL is <a href="https://en.wikipedia.org/wiki/K_(programming_language)">K</a>. Developed by Arthur Whitney it uses lists instead of arrays as the primary data structure and ASCII for ease of use. A brief homage to <em>K</em> exists in <a href="https://github.com/kevinlawler/kona" class="uri">https://github.com/kevinlawler/kona</a>.</p>
+          <p>The page mentions that “People can and do create network trading platforms in hours.” The page also links to an original source file by Arthur Whitney to <a href="https://github.com/tavmem/buddy/blob/master/a/b.c" class="uri">https://github.com/tavmem/buddy/blob/master/a/b.c</a>. The source file itself refers to <code>k.h</code> which is there in <a href="https://github.com/tavmem/buddy/blob/master/a/k.h">k.h</a> and describes the various definitions used in the previous one. <a href="https://github.com/tavmem/buddy/blob/master/a/k.c">k.c</a> is an interesting skim. Extremely unreadable.</p>
+          <p>It appears that these are highly concise, primarily functional languages written with data processing in mind.</p>
+          <p><a id="org79bd77b"></a></p>
+          <h2 id="notation-of-thought">Notation of Thought</h2>
+          <p>What Whitney did was create an APL like dialect from C and used it to code other parts of the system. Such practices would be unheard of today as these programs read like minified versions of source code. In fact, much after APL, and alongside K a parallel movement of <em>literate programming</em> had begun to take hold which propounded blurting out all that was going inside the programmer’s head while writing code (See <a href="https://en.wikipedia.org/wiki/Web_(programming_system)">web</a>, <a href="https://www.cs.tufts.edu/~nr/noweb/">noweb</a>). The comments in that weren’t separate from the code but in fact, part of the software.</p>
+          <p>Such processes have evolved into maintaining extensive documentation and testing today where the need for explainability outweighs the need for performance or speed of coding.</p>
+          <p>However, I do wonder (although without having read Iverson’s paper) that if that’s the best way to go about things. Wouldn’t we read and write much faster if the code was indeed more succinct? It does involve learning an entirely new language I admit. Perhaps a bit like learning Mandarin. But it is an idea worth exploring more.</p>
+          <h2 class="unnumbered" id="references">References</h2>
+          <div id="refs" class="references csl-bib-body" role="doc-bibliography">
+          <div id="ref-backus1978programming" class="csl-entry" role="doc-biblioentry">
+          <div class="csl-left-margin">[1] </div><div class="csl-right-inline">J. Backus, <span>“Can programming be liberated from the von neumann style?: A functional style and its algebra of programs,”</span> <em>CACM</em>, 1978.</div>
+          </div>
+          </div>
+          <section class="footnotes" role="doc-endnotes">
+          <hr />
+          <ol>
+          <li id="fn1" role="doc-endnote"><p>I’m not detailing “Training Pipeline”, which I’ve been working on for a while and which I’ve named <em>DORC</em> earlier, for the fact that I’m planning a major code and design refactor and perhaps a name of change and opening up the source will also be in order.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+          </ol>
+          </section>
+        </span>
+      </div>
+
+      <div class="about shadow">
+        <!-- <div class="content"> -->
+          <script type="text/javascript" src="../assets/js/about.js"></script>
+<header>
+  <div class="cover-author-image">
+    <a href="../about.html"><img src="../assets/img/photo.png" alt="Akshay Badola"></a>
+  </div>
+  <div class="author-name">Akshay Badola</div>
+  <div class="author-description">I do stuff, sometimes.</div>
+</header> <!-- End Header -->
+<footer>
+  <section class="contact">
+    <h4 class="contact-title">Contact me</h4>
+    <ul>
+      <li class="github">
+        <a href="https://github.com/akshaybadola" target="_blank">
+          <i class="fa fa-github"></i>
+        </a>
+      </li>
+      <li class="linkedin">
+        <a href="https://linkedin.com/in/akshay-badola" target="_blank">
+          <i class="fa fa-linkedin"></i>
+        </a>
+      </li>
+    </ul>
+  </section> <!-- End Section Contact -->
+  <div class="copyright">
+  <p>2021 &copy; Akshay Badola</p>
+  </div>
+</footer> <!-- End Footer -->
+        <!-- </div> -->
+      </div>
+
+      <!-- <div class="row banner footer"> -->
+        <!-- Include author and date -->
+        <!-- 	 <p class="author">Akshay Badola</p>  -->
+        <!-- 	 <p class="date">2021-08-06</p>  -->
+        <!-- </div> -->
+
+      
+      <!-- <script type="text/javascript" src="/assets/js/jquery-3.3.1.js"></script> -->
+      <!-- <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script> -->
+      <script type="text/javascript">document.onload=backrefs();</script>
+      <script type="text/javascript">document.onload=change_title();</script>
+      <script type="text/javascript">document.onload=change_about();</script>
+    </div>
+  </body>
+</html>

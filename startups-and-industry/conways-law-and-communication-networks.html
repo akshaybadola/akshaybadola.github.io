@@ -73,8 +73,8 @@
 <li><a href="#patterns-of-communication">Patterns of Communication</a></li>
 <li><a href="#modern-trends">Modern Trends</a></li>
 <li><a href="#traps">Traps</a></li>
-</ul></li>
 <li><a href="#references">References</a></li>
+</ul></li>
 </ul> 
     	  </div>
         </div>
@@ -82,11 +82,11 @@
       <div class="main parent">
         <span>Posted on: 2021-07-26, in Category: <a class="category" href="../startups-and-industry.html">startups-and-industry</a>, tags: <a class="tag" href='../tags/communication.html'>communication</a> <a class="tag" href='../tags/organizations.html'>organizations</a> <a class="tag" href='../tags/startups.html'>startups</a> <a class="tag" href='../tags/conway's_law.html'>conway's_law</a></span>
         <span style="padding: 1%">
-          <p><a id="orgf96ec61"></a></p>
+          <p><a id="org75131e7"></a></p>
           <h1 id="conways-law-and-communication-networks">Conway’s law and communication networks</h1>
           <p>I’ve been working in this (stealth as of now) startup for more than a month now and although it’s smaller than the one where I had worked prveviously, I’m quite intrigued by the communication structures and the inefficiencies that I perceive because of them.</p>
           <p>One key difference here is that I have to coordinate across mutliple teams (two as of now) with different skills and specializations and as such, I can see certain patterns of communication emerging and which also makes me think of Conway’s law:</p>
-          <p><a id="orgb9325e1"></a></p>
+          <p><a id="orgcf96996"></a></p>
           <h2 id="conways-law">Conway’s Law</h2>
           <blockquote>
           <p>Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization’s communication structure.</p>
@@ -107,7 +107,7 @@
           <li>Overview of the communication structure</li>
           <li>Mathematical modeling of the communication and task patterns</li>
           </ol>
-          <p><a id="org0ca683c"></a></p>
+          <p><a id="org1cc2e07"></a></p>
           <h2 id="patterns-of-communication">Patterns of Communication</h2>
           <p>Mathematical modeling we leave for a later date and let’s get back to communication patterns and systems. Here I note down the patterns and some observations related to those patterns emerging:</p>
           <ol type="1">
@@ -116,7 +116,7 @@
           <li>Inter team and inter department communication happens usually through few intersection points (or interfaces).</li>
           <li>Localization of messages leads to separate codes being developed for each team/department.</li>
           </ol>
-          <p>Now, at this point it seems that the communication networks are behaving like the Real World Networks explored by Barabasi in <span class="citation" data-cites="2021">(<a href="#ref-2021" role="doc-biblioref"><strong>2021?</strong></a>)</span> and I’m curious if the networks mentioned in the book are natural or man made? I’ll have to read the book for that.</p>
+          <p>Now, at this point it seems that the communication networks are behaving like the Real World Networks explored by Barabasi in <span class="citation" data-cites="2021">(<a href="#ref-2021" role="doc-biblioref">Barabasi 2021</a>)</span> and I’m curious if the networks mentioned in the book are natural or man made? I’ll have to read the book for that.</p>
           <p>Getting back to communication in an organization, another thing I’ve noticed is that we as software engineers have modeled the systems based on the network patterns. For example, contrast the Java ecosystem with Emacs.</p>
           <p>Java is:</p>
           <ol type="1">
@@ -151,11 +151,11 @@
           <li><p>Elisp: Things can get ugly if bad code is introduced</p>
           <p>OSS: Projects can die quickly if the driving people aren’t good. Though that can be said of enterprises also but it’s more true for OSS projects because of lack of structure. A top exec can be replaced but it’s more difficult to replace a BDFL in an OSS project.</p></li>
           </ol>
-          <p><a id="orge84ccee"></a></p>
+          <p><a id="orgfeb6337"></a></p>
           <h2 id="modern-trends">Modern Trends</h2>
           <p>Curiously the modern trend has been to have a bit of a hybrid approach of the two. Permit wide variation within components but strict communication protocols across components. Such patterns can emerge in Microservices where the implementation of each microservice is not only independent but could use any framework or design pattern. While the communication between the microservices is usually strict and follows certain patterns.</p>
           <p>The question then to ask is, can we adapt this pattern to an organization? Have these patterns already been adapted? Agile and related methods have already evangelized small teams, documentation and TDD etc. Companies like Amazon have focused on small teams for fast evolution of new features. We have to then think of how the communication patterns should be analogous to microservices architecture.</p>
-          <p><a id="org927c342"></a></p>
+          <p><a id="org00b868d"></a></p>
           <h2 id="traps">Traps</h2>
           <p>Of course all of these dictums won’t hold in all cases. Certain assumptions can simply be not true in the given context. For example:</p>
           <ol type="1">
@@ -163,7 +163,12 @@
           <li>Humans aren’t fully rational Humans can have skewed incentives like social constraints and objectives or other psychological factors.</li>
           <li>Humans need motivation While a machine will simply perform its task, humans will need to have motivation to perform it and money may not always be motivation enough.</li>
           </ol>
-          <h1 id="references">References</h1>
+          <h2 class="unnumbered" id="references">References</h2>
+          <div id="refs" class="references csl-bib-body" role="doc-bibliography">
+          <div id="ref-2021" class="csl-entry" role="doc-biblioentry">
+          <div class="csl-left-margin">[1] </div><div class="csl-right-inline">A.-L. Barabasi, <span>“Network science.”</span> <a href="http://networksciencebook.com/" class="uri">http://networksciencebook.com/</a>, 2021.</div>
+          </div>
+          </div>
         </span>
       </div>
 
